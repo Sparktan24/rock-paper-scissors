@@ -7,22 +7,19 @@ const computerPlay = function(){
     if (randomNum >= .667 && randomNum <= 1)    result = 'SCISSORS';
     return result;
 };
-//computerPlay();
-
 
 const playRound = function(playerSelection, computerSelection){
     let winner ='';
     console.log(`Computer selection is: ${computerSelection} Player selection is: ${playerSelection}`);
-    if(playerSelection == 'SCISSORS' && computerSelection == 'PAPPER' || 
-        playerSelection == 'PAPPER' && computerSelection == 'ROCK' ||
-        playerSelection == 'PAPPER' && computerSelection == 'ROCK') return 'Human wins;'
 
-/*     if(playerSelection == 'SCISSORS' && computerSelection == 'PAPPER') return 'Human wins';
-    if(playerSelection == 'PAPPER' && computerSelection == 'ROCK') return 'human wins';
-    if(playerSelection == 'ROCK' && computerSelection == 'SCISSORS') return 'human wins'; */
+    if( playerSelection == computerSelection) return 'Draw';
+
+    if( playerSelection == 'SCISSORS'   && computerSelection == 'PAPPER'  || 
+        playerSelection == 'PAPPER'     && computerSelection == 'ROCK'    ||
+        playerSelection == 'ROCK'       && computerSelection == 'SCISSORS')   return 'Human wins';
     return 'computer wins';
 };
 
-const playerSelection = 'rock'.toUpperCase();
+const playerSelection = 'sciSsOrs'.toUpperCase();
 const computerSelection = computerPlay();
 playRound(playerSelection, computerSelection);
