@@ -7,19 +7,32 @@ const computerPlay = function(){
     if (randomNum >= .667 && randomNum <= 1)    result = 'SCISSORS';
     return result;
 };
-
+    let hCount = 0;
+    let cCount = 0;
 const playRound = function(playerSelection, computerSelection){
-    let winner ='';
     console.log(`Computer selection is: ${computerSelection} Player selection is: ${playerSelection}`);
-
-    if( playerSelection == computerSelection) return 'Draw';
+    if( playerSelection == computerSelection) return console.log('Draw');
 
     if( playerSelection == 'SCISSORS'   && computerSelection == 'PAPPER'  || 
         playerSelection == 'PAPPER'     && computerSelection == 'ROCK'    ||
-        playerSelection == 'ROCK'       && computerSelection == 'SCISSORS')   return 'Human wins';
-    return 'computer wins';
+        playerSelection == 'ROCK'       && computerSelection == 'SCISSORS'){
+            hCount++;
+            return console.log('Player wins');
+        } 
+    cCount++;    
+    return console.log('Computer wins');
 };
 
-const playerSelection = 'sciSsOrs'.toUpperCase();
-const computerSelection = computerPlay();
-playRound(playerSelection, computerSelection);
+let game = function(){
+    for(i=0; i <5; i++){
+        const playerSelection = prompt('Select rock, papper or scissors').toUpperCase();
+        const computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+    }
+    if (hCount == cCount) return `Draw, computer: ${cCount}, player: ${hCount}`;
+    if (hCount < cCount) return `Computer wins: ${cCount} to ${hCount}`; 
+    return `Player wins: ${hCount} to ${cCount}`;
+};
+
+game();
+
